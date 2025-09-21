@@ -1551,7 +1551,7 @@ fi
 
 add_yuming() {
 	  ip_address
-	  echo -e "最初にドメイン名をネイティブIPに解決します。${gl_huang}$ipv4_address  $ipv6_address${gl_bai}"
+	  echo -e "最初にドメイン名をローカルIPに解決します。${gl_huang}$ipv4_address  $ipv6_address${gl_bai}"
 	  read -e -p "IPまたは解決されたドメイン名を入力してください：" yuming
 }
 
@@ -1733,7 +1733,7 @@ nginx_waf() {
 		wget -O /home/web/nginx.conf "${gh_proxy}raw.githubusercontent.com/kejilion/nginx/main/nginx10.conf"
 	fi
 
-	# モードパラメーターに従ってWAFをオンまたはオフにすることを決定します
+	# モードパラメーターに従ってWAFをオンまたはオフにすることにしました
 	if [ "$mode" == "on" ]; then
 		# WAFをオンにしてください：コメントを削除します
 		sed -i 's|# load_module /etc/nginx/modules/ngx_http_modsecurity_module.so;|load_module /etc/nginx/modules/ngx_http_modsecurity_module.so;|' /home/web/nginx.conf > /dev/null 2>&1
@@ -8040,7 +8040,7 @@ linux_ldnmp() {
 	  echo "Redisポート：6379"
 	  echo ""
 	  echo "ウェブサイトURL：https：//$yuming"
-	  echo "バックエンドログインパス： /admin"
+	  echo "バックグラウンドログインパス： /admin"
 	  echo "------------------------"
 	  echo "ユーザー名：admin"
 	  echo "パスワード：管理者"
@@ -11937,7 +11937,7 @@ while true; do
 		echo -e "${gl_huang}すべてのクライアント構成コード：${gl_bai}"
 		docker exec wireguard sh -c 'for d in /config/peer_*; do echo "# $(basename $d) "; cat $d/*.conf; echo; done'
 		sleep 2
-		echo -e "${gl_lv}${COUNT}すべての出力はすべて各クライアントによって構成されており、使用方法は次のとおりです。${gl_bai}"
+		echo -e "${gl_lv}${COUNT}すべての出力は各クライアントによって提供されます。使用方法は次のとおりです。${gl_bai}"
 		echo -e "${gl_lv}1.携帯電話にWGのアプリをダウンロードして、上のQRコードをスキャンしてネットワークにすばやく接続します${gl_bai}"
 		echo -e "${gl_lv}2。Windowsクライアントをダウンロードし、構成コードをコピーしてネットワークに接続します。${gl_bai}"
 		echo -e "${gl_lv}3。Linuxはスクリプトを使用してWGクライアントを展開し、構成コードをコピーしてネットワークに接続します。${gl_bai}"
@@ -12852,7 +12852,7 @@ EOF
 				echo "3。日本の東京時間4。韓国のソウル時間"
 				echo "5。シンガポール時間6。インドのコルカタ時間"
 				echo "7。アラブ首長国連邦のドバイ時間8。オーストラリアのシドニー時間"
-				echo "9。バンコク・タイム、タイ"
+				echo "9。タイのバンコクでの時間"
 				echo "------------------------"
 				echo "ヨーロッパ"
 				echo "11。英国のロンドン時間12。パリの時間フランスの時間"
@@ -13023,7 +13023,7 @@ EOF
 								  (crontab -l ; echo "0 0 * * $weekday $newquest") | crontab - > /dev/null 2>&1
 								  ;;
 							  3)
-								  read -e -p "毎日タスクを実行する時間を選択しますか？ （時間、0-23）：" hour
+								  read -e -p "毎日タスクを実行する時期を選択しますか？ （時間、0-23）：" hour
 								  (crontab -l ; echo "0 $hour * * * $newquest") | crontab - > /dev/null 2>&1
 								  ;;
 							  4)
@@ -13078,7 +13078,7 @@ EOF
 
 						  ;;
 					  2)
-						  read -e -p "削除する必要があるコンテンツの解析のキーワードを入力してください。" delhost
+						  read -e -p "削除する必要があるコンテンツを解析するために、キーワードを入力してください。" delhost
 						  sed -i "/$delhost/d" /etc/hosts
 						  send_stats "ローカルホストの解析と削除"
 						  ;;
@@ -13531,7 +13531,7 @@ EOF
 					  sed -i 's/^ENABLE_STATS="false"/ENABLE_STATS="true"/' /usr/local/bin/k
 					  sed -i 's/^ENABLE_STATS="false"/ENABLE_STATS="true"/' ~/kejilion.sh
 					  echo "コレクションが有効になっています"
-					  send_stats "プライバシーとセキュリティコレクションが有効になっています"
+					  send_stats "プライバシーとセキュリティが収集のために有効になっています"
 					  ;;
 				  2)
 					  cd ~

@@ -57,7 +57,7 @@ CheckFirstRun_true() {
 
 
 
-# 기능 매장 지점 정보를 수집하는 기능, 현재 스크립트 버전 번호, 사용 시간, 시스템 버전, CPU 아키텍처, 컴퓨터 국가 및 사용자가 사용하는 기능 이름을 기록합니다. 그들은 절대적으로 민감한 정보를 포함하지 않습니다. 제발 나를 믿으세요!
+# 기능 매장 지점 정보를 수집하는 기능, 현재 스크립트 버전 번호, 사용 시간, 시스템 버전, CPU 아키텍처, 기계 국가 및 사용자가 사용하는 기능 이름을 기록합니다. 그들은 절대적으로 민감한 정보를 포함하지 않습니다. 제발 나를 믿으세요!
 # 이 기능을 설계 해야하는 이유는 무엇입니까? 목적은 사용자가 사용하는 기능을 더 잘 이해하고 기능을 더욱 최적화하여 사용자 요구를 충족시키는 더 많은 기능을 시작하는 것입니다.
 # 전체 텍스트의 경우 Send_Stats 기능 호출 위치, 투명 및 오픈 소스를 검색 할 수 있으며 우려 사항이 있으면 사용을 거부 할 수 있습니다.
 
@@ -1180,7 +1180,7 @@ iptables_panel() {
 
 			  5)
 				  # IP 화이트리스트
-				  read -e -p "해제 할 IP 또는 IP 세그먼트를 입력하십시오." o_ip
+				  read -e -p "릴리스하려면 IP 또는 IP 세그먼트를 입력하십시오." o_ip
 				  allow_ip $o_ip
 				  ;;
 			  6)
@@ -1551,7 +1551,7 @@ fi
 
 add_yuming() {
 	  ip_address
-	  echo -e "먼저 도메인 이름을 기본 IP로 해결합니다.${gl_huang}$ipv4_address  $ipv6_address${gl_bai}"
+	  echo -e "먼저 도메인 이름을 로컬 IP로 해결합니다.${gl_huang}$ipv4_address  $ipv6_address${gl_bai}"
 	  read -e -p "IP 또는 해결 된 도메인 이름을 입력하십시오." yuming
 }
 
@@ -4523,7 +4523,7 @@ sed -i 's/^\s*#\?\s*PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_confi
 sed -i 's/^\s*#\?\s*PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config;
 rm -rf /etc/ssh/sshd_config.d/* /etc/ssh/ssh_config.d/*
 restart_ssh
-echo -e "${gl_lv}루트 로그인 설정이 완료되었습니다!${gl_bai}"
+echo -e "${gl_lv}루트 로그인이 설정되었습니다!${gl_bai}"
 
 }
 
@@ -5001,7 +5001,7 @@ elrepo_install() {
 		linux_Settings
 	fi
 	# 감지 된 운영 체제 정보를 인쇄합니다
-	echo "감지 된 운영 체제 :$os_name $os_version"
+	echo "운영 체제 감지 :$os_name $os_version"
 	# 시스템 버전에 따라 해당 Elrepo 창고 구성을 설치하십시오.
 	if [[ "$os_version" == 8 ]]; then
 		echo "Elrepo 저장소 구성 (버전 8)을 설치하십시오 ..."
@@ -11937,7 +11937,7 @@ while true; do
 		echo -e "${gl_huang}모든 클라이언트 구성 코드 :${gl_bai}"
 		docker exec wireguard sh -c 'for d in /config/peer_*; do echo "# $(basename $d) "; cat $d/*.conf; echo; done'
 		sleep 2
-		echo -e "${gl_lv}${COUNT}모든 출력은 모두 각 클라이언트에 의해 구성되며 사용 방법은 다음과 같습니다.${gl_bai}"
+		echo -e "${gl_lv}${COUNT}모든 출력은 각 클라이언트가 제공합니다. 사용법은 다음과 같습니다.${gl_bai}"
 		echo -e "${gl_lv}1. 휴대 전화에서 WG의 앱을 다운로드하고 위의 QR 코드를 스캔하여 네트워크에 빠르게 연결하십시오.${gl_bai}"
 		echo -e "${gl_lv}2. Windows 클라이언트를 다운로드하고 구성 코드를 복사하여 네트워크에 연결하십시오.${gl_bai}"
 		echo -e "${gl_lv}3. Linux는 스크립트를 사용하여 WG 클라이언트를 배포하고 구성 코드를 복사하여 네트워크에 연결합니다.${gl_bai}"
@@ -11991,7 +11991,7 @@ while true; do
 				fi
 			done
 
-			# 구성 파일에 씁니다
+			# 구성 파일에 쓰십시오
 			echo "$input" > "$CONFIG_FILE"
 
 			echo "클라이언트 구성이 저장되었습니다$CONFIG_FILE"
@@ -12375,7 +12375,7 @@ linux_Settings() {
 	  echo -e "${gl_kjlan}17.  ${gl_bai}방화벽 고급 관리자${gl_kjlan}18.  ${gl_bai}호스트 이름을 수정하십시오"
 	  echo -e "${gl_kjlan}19.  ${gl_bai}스위치 시스템 업데이트 소스${gl_kjlan}20.  ${gl_bai}타이밍 작업 관리"
 	  echo -e "${gl_kjlan}------------------------"
-	  echo -e "${gl_kjlan}21.  ${gl_bai}기본 호스트 분석${gl_kjlan}22.  ${gl_bai}SSH 방어 프로그램"
+	  echo -e "${gl_kjlan}21.  ${gl_bai}기본 호스트 구문 분석${gl_kjlan}22.  ${gl_bai}SSH 방어 프로그램"
 	  echo -e "${gl_kjlan}23.  ${gl_bai}현재 한도의 자동 종료${gl_kjlan}24.  ${gl_bai}루트 비공개 키 로그인 모드"
 	  echo -e "${gl_kjlan}25.  ${gl_bai}TG-BOT 시스템 모니터링 및 조기 경고${gl_kjlan}26.  ${gl_bai}OpenSsh 고위험 취약점을 수정하십시오"
 	  echo -e "${gl_kjlan}27.  ${gl_bai}Red Hat Linux 커널 업그레이드${gl_kjlan}28.  ${gl_bai}Linux 시스템에서 커널 매개 변수의 최적화${gl_huang}★${gl_bai}"
@@ -12852,7 +12852,7 @@ EOF
 				echo "3. 일본의 도쿄 시간 4. 한국의 서울 시간"
 				echo "5. 싱가포르 시간 6. 인도의 콜카타 시간"
 				echo "7. UAE 8의 두바이 시간. 호주 시드니 시간"
-				echo "9. 방콕 시간, 태국"
+				echo "9. 태국 방콕에서의 시간"
 				echo "------------------------"
 				echo "유럽"
 				echo "11. 영국의 런던 시간 12. 프랑스의 파리 시간"
@@ -13023,7 +13023,7 @@ EOF
 								  (crontab -l ; echo "0 0 * * $weekday $newquest") | crontab - > /dev/null 2>&1
 								  ;;
 							  3)
-								  read -e -p "매일 작업을 수행 할 시간을 선택하십시오. (시간, 0-23) :" hour
+								  read -e -p "매일 작업을 수행 할시기를 선택 하시겠습니까? (시간, 0-23) :" hour
 								  (crontab -l ; echo "0 $hour * * * $newquest") | crontab - > /dev/null 2>&1
 								  ;;
 							  4)
@@ -13078,7 +13078,7 @@ EOF
 
 						  ;;
 					  2)
-						  read -e -p "삭제 해야하는 구문 분석 컨텐츠의 키워드를 입력하십시오." delhost
+						  read -e -p "삭제 해야하는 콘텐츠를 구문 분석하기위한 키워드를 입력하십시오." delhost
 						  sed -i "/$delhost/d" /etc/hosts
 						  send_stats "로컬 호스트 구문 분석 및 삭제"
 						  ;;
@@ -13531,7 +13531,7 @@ EOF
 					  sed -i 's/^ENABLE_STATS="false"/ENABLE_STATS="true"/' /usr/local/bin/k
 					  sed -i 's/^ENABLE_STATS="false"/ENABLE_STATS="true"/' ~/kejilion.sh
 					  echo "수집이 활성화되었습니다"
-					  send_stats "개인 정보 보호 및 보안 컬렉션이 활성화되었습니다"
+					  send_stats "수집을 위해 개인 정보 및 보안이 가능했습니다"
 					  ;;
 				  2)
 					  cd ~
